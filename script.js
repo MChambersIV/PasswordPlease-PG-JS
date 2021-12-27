@@ -1,6 +1,5 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -8,7 +7,7 @@ function writePassword() {
 
   passwordText.value = password;
 
-}
+};
 
 var generator = {
   upperCase: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
@@ -17,23 +16,39 @@ var generator = {
   specialCharacters: ["!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","{","}","|","~"],
 };
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", function() {
-  input = prompt("Please enter you desired password length. Note: It must be between 8 and 128 chracters in length","Ex: 8,20,100");
-    if (input>=8 && input<=128) {alert("Please continue");}
-     else {alert("Your password length is outside of the given parameters. Please try again.")
-
+function stepOne() {
+  var inputOne = prompt("Please enter you desired password length. Note: It must be between 8 and 128 characters in length","Ex: 8,20,100");
+   if (inputOne>=8 && inputOne<=128) stepTwo();
+   else {alert("Your password length is outside of the given parameters. Please try again.");
+    };
   };
 
+function stepTwo() {
+  var inputTwo = confirm("Would you like upper case characters in your password? Press cancel for no.");
+    if (inputTwo===true) stepThree();
+      else if (inputTwo===false) stepThree();
+};
+function stepThree() {
+  var inputThree = confirm("Would you like lower case characters in your password? Press cancel for no.");
+    if (inputThree===true) stepFour();
+      else if (inputThree===false) stepFour();
+};
+function stepFour() {
+  var inputFour= confirm("Would you like Numbers in your password? Press cancel for no.");
+    if (inputFour===true) stepFive()
+      else if (inputFour===false) stepFive();
+};
+function stepFive() {
+  var inputFive = confirm("Would you like special characters in your password? Press cancel for no.");
+    if (inputFive===true) genPass();
+      else if (inputFive===false) genPass();
+};
 
-});
+function genPass() {
+ 
 
-//We want a password generator
-    //When the password button on the html page is clicked a new random string of characters numbers and special characters will appear in the password box.
+};
 
-    //We need this button to run a function when clicked
-      //This function must add characters to a string
-      //This function must add special chracters to a string
-      //This function must add numbers to a string
-      //This function must order these at random
-      //This new string must display in the box
+// Add event listener to generate button
+generateBtn.addEventListener("click", stepOne);
+
