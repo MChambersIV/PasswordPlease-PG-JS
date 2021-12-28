@@ -63,11 +63,12 @@ function prepSpec() {
 };
 
 function anyCrit() {
-  if (genArrays===undefined) {alert("You have not selected any criterion. Please select at least one.")
-  }
-    else {
-      writePassword()
+  if (genArrays[0]===undefined) {alert("You have not selected any criterion. Please select at least one.");
+
+  } else { writePassword()
+    
     };
+
 };
 
 var password = ""
